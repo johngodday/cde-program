@@ -13,6 +13,7 @@ raw/
 # Ignore transformed data
 Transformed/
 Gold/
+json_and_csv/
 
 # Ignore logs
 logs/
