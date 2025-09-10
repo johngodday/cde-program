@@ -8,6 +8,7 @@
 # Ignore raw extracted data
 raw/
 *.csv
+*.json
 
 # Ignore transformed data
 Transformed/
