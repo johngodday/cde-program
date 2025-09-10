@@ -1,0 +1,30 @@
+# =========================
+# ETL Bash Project Gitignore
+# =========================
+
+# Ignore environment variables
+.env
+
+# Ignore raw extracted data
+raw/
+*.csv
+
+# Ignore transformed data
+Transformed/
+Gold/
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore OS / Editor junk files
+.DS_Store
+Thumbs.db
+
+# Ignore shell history
+.bash_history
+
+# Ignore backup/temp files
+*~
+*.swp
+*.bak
