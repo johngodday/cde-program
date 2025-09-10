@@ -42,3 +42,37 @@ This aspect of the project created a **Bash script** that download **CSVs** from
 2. Write a query that returns a list of orders where the standard_qty is zero and either the gloss_qty or poster_qty is over 1000.
 3. Find all company names that: start with 'C' or 'W' AND their primary contact contains 'ana' or 'Ana' BUT does not contain 'eana'
 4. Show the region for each sales rep with their accounts. Columns: region name, sales rep name, account name. Sort alphabetically by account name.
+
+------
+### Architectural diagram for my ETL Pipeline 
+
+          ┌─────────────────────┐
+          │  GitHub Repository  │
+          │ (CSV source files)  │
+          └─────────┬───────────┘
+                    │ (curl download)
+                    ▼
+          ┌─────────────────────┐
+          │   Bash ETL Script   │
+          │  (Extract, Move,    │
+          │   Drop/Create/Copy) │
+          └─────────┬───────────┘
+                    │ (COPY via psql)
+                    ▼
+          ┌─────────────────────┐
+          │ PostgreSQL (Docker) │
+          │   DB: posey         │
+          │   Tables:           │
+          │   - accounts        │
+          │   - orders          │
+          │   - region          │
+          │   - sales_reps      │
+          │   - web_events      │
+          └─────────┬───────────┘
+                    │
+                    ▼
+          ┌─────────────────────┐
+          │    pgAdmin / BI     │
+          │  (Query, Analysis)  │
+          └─────────────────────┘
+
