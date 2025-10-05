@@ -1,0 +1,1 @@
+0 0 * * * python /app/run_once.py >> /app/cron.log 2>&1

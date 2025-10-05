@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_current_weather
+    description: "Staging model for current weather data."
+
+  - name: stg_forecast_weather
+    description: "Staging model for forecast weather data."
+
+  - name: fact_current_weather
+    description: "Fact table for current weather metrics."
+
+  - name: fact_forecast_weather
+    description: "Fact table for forecast weather metrics."

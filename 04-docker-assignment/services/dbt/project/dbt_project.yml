@@ -1,0 +1,16 @@
+name: "weather_project"
+version: "1.0.0"
+config-version: 2
+
+profile: "weather_profile"
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  weather_project:
+    staging:
+      +schema: cde
+    marts:
+      +schema: cde
