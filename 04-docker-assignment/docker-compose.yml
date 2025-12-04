@@ -1,0 +1,55 @@
+
+# services:
+#   py-etl:
+#     build: ./services/py-etl
+#     container_name: py-etl
+#     environment:
+#       - POSTGRES_DB=${POSTGRES_DB}
+#       - POSTGRES_USER=${POSTGRES_USER}
+#       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+#       - POSTGRES_HOST=${POSTGRES_HOST}
+#       - POSTGRES_PORT=${POSTGRES_PORT}
+#       - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+#       - RUN_MODE=once
+#     volumes:
+#       - ./data:/data
+#       - ./logs/python:/logs/python
+#       - ./services/py-etl/app:/app
+#     command: ["python", "-u", "app/run_once.py"]
+
+#   dbt:
+#     build: ./services/dbt
+#     container_name: dbt
+#     environment:
+#       - POSTGRES_DB=${POSTGRES_DB}
+#       - POSTGRES_USER=${POSTGRES_USER}
+#       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+#       - POSTGRES_HOST=${POSTGRES_HOST}
+#       - POSTGRES_PORT=${POSTGRES_PORT}
+#     volumes:
+#       - ./services/dbt/project:/app
+#       - ./logs/dbt:/logs/dbt
+#     working_dir: /app
+#     command: ["bash", "-lc", "dbt deps && dbt run && dbt test"]
+
+services:
+  py-etl:
+    build: ./services/etl
+    container_name: py-etl
+    env_file: .env
+    volumes:
+      - ./services/etl:/app
+      - ./logs/etl:/app/logs
+    command: ["cron", "-f"]
+
+  dbt:
+    build: ./services/dbt
+    container_name: dbt
+    env_file: .env
+    volumes:
+      - ./services/dbt/project:/app/project
+      - ./logs/dbt:/logs/dbt
+    working_dir: /app/project
+    command: ["bash", "-lc", "dbt deps && dbt run --profiles-dir /app/project && dbt test --profiles-dir /app/project"]
+
+

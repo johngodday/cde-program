@@ -1,0 +1,26 @@
+
+# Ignore environment variables
+.env
+
+# Ignore raw extracted data
+raw/
+*.csv
+*.json
+.env
+
+
+# Ignore logs
+logs/
+*.log
+
+
+# Ignore OS / Editor junk files
+.DS_Store
+Thumbs.db
+
+# Ignore shell history
+.bash_history
+
+# Ignore backup/temp files
+*~
+*.swp

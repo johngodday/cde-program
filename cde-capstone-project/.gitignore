@@ -1,0 +1,20 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+cdproject/
+
+# AWS
+.aws/credentials
+
+# Logs
+*.log
+
+# dbt
+dbt/target/
+dbt/logs/
+
+#.env
+.env
+.terraform
+file_not_used/
