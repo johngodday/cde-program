@@ -16,5 +16,7 @@ dbt/logs/
 
 #.env
 .env
-.terraform
-file_not_used/
+.terraform/
+files_not_used/
+.DS_Store
+*.json
