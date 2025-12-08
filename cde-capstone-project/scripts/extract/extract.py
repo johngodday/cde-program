@@ -190,6 +190,7 @@ class DataBaseExtractor(BaseExtractor):
             key=s3_path,
             df=df
         )
+        
 
 if __name__ == "__main__":
 
